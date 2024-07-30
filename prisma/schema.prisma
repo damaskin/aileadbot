@@ -1,0 +1,20 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model ChatThread {
+  id          Int    @id @default(autoincrement())
+  chatId      String @unique
+  threadId    String
+  assistantId String
+}
+
+model ProcessedMessage {
+  id        Int    @id @default(autoincrement())
+  messageId String @unique
+}
